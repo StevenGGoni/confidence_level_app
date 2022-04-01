@@ -4,6 +4,12 @@ library(shiny)
 
 ggplot2::theme_set(theme_bw(base_size = 20))
 
+N <- 100000
+
+set.seed(123)
+
+poblacion <- rnorm(N, 0, 2)
+
 # Define UI for application 
 ui <- fluidPage(
   
@@ -14,6 +20,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       "Cambie los siguientes valores", 
+      position = "right",
       sliderInput("conf",
                   "Nivel de confianza:",
                   min = 0.5,
@@ -26,12 +33,15 @@ ui <- fluidPage(
                   min = 10,
                   max = 200,
                   value = 30, 
-                  step = 10)
+                  step = 10), 
       
     ),
     
     # Show a plot
     mainPanel(
+      h3("Los datos provienen de una población normal con media 0 y varianza 4 N(0, 4)"),
+      h3("Intervalos de confianza para 100 muestras de tamaño N"),
+      h3("Nivel de significancia variable"),
       plotOutput("IC_plot")
     )
   )
