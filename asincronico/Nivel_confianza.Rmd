@@ -32,32 +32,31 @@ ggplot2::theme_set(theme_bw(base_size = 20))
 
 ```
 
-Lo que aquí se discute y propone es una ampliación de lo visto en el material: "Repaso de regresiones" de autoría de la profesora Patricia Ramírez Barrantes. 
+Lo que aquí se discute y propone es una ampliación de lo visto en el material: "Repaso de regresiones" de autoría de la profesora Patricia Ramírez Barrantes.
 
-Lo que se pretende es generar la reflexión de la persona estudiante alrededor de la selección del nivel de confianza/significancia. Se va a utilizar como ejemplo la selección del nivel de confianza en los intervalos de confianza, por su facilidad de entendimiento y aplicación, pero la mayoría de conceptos pueden ser ampliables a otras pruebas estadísticas que utilicen el nivel de significancia.  
+Lo que se pretende es generar la reflexión de la persona estudiante alrededor de la selección del nivel de confianza/significancia. Se va a utilizar como ejemplo la selección del nivel de confianza en los intervalos de confianza, por su facilidad de entendimiento y aplicación, pero la mayoría de conceptos pueden ser ampliables a otras pruebas estadísticas que utilicen el nivel de significancia.
 
 Durante la lectura de este material complementario y utilización de la simulación interactiva piense:
 
->*¿Qué sucede si escojo otro nivel de confianza?*
+> *¿Qué sucede si escojo otro nivel de confianza?*
 
 # Intervalo de confianza
 
-## ¿Qué es? 
+## ¿Qué es?
 
 En simple, es un rango de valores dentro del cual es **posible** que se incluya el valor de un parámetro de la **población** (en alguna literatura/contexto se le suele llamar valor real) que es desconocido. Este intervalo es construido a partir de los estadísticos de una **muestra**.
 
-Un **intervalo de confianza** para un parámetro con un **nivel de confianza** $1-\alpha$, donde $0<\alpha<1$, es un intervalo que contiene con probabilidad $1-\alpha$ al parámetro en cuestión. A $\alpha$ se le conoce como nivel de significancia. 
+Un **intervalo de confianza** para un parámetro con un **nivel de confianza** $1-\alpha$, donde $0<\alpha<1$, es un intervalo que contiene con probabilidad $1-\alpha$ al parámetro en cuestión. A $\alpha$ se le conoce como nivel de significancia.
 
-Los valores **más habituales** del nivel de confianza $1-\alpha$ son 0.90, 0.95 o 0.99. 
+Los valores **más habituales** del nivel de confianza $1-\alpha$ son 0.90, 0.95 o 0.99.
 
->*Reflexión: ¿Por qué son los más habituales? Investigue*
+> *Reflexión: ¿Por qué son los más habituales? Investigue*
 
 Sea $\theta$ el parámetro poblacional o desconocido que es de nuestro interés (de momento, $\theta$ puede ser cualquier parámetro) y que se desea estimar a partir de los estadísticos de muestra. Entonces, el intervalo de confianza **bilateral** (es decir, en las dos colas) para $\theta$ sería (OJO con la notación, *los techitos*, dicho de forma incorrecta):
 
 $$
 \hat{\theta} \pm t_{\alpha/2}*S_{\hat{\theta}}
-$$
-Donde $S_{\hat{\theta}}$ se conoce como error estándar y $t_{\alpha/2}$ deviene la distribución **t-student**.
+$$ Donde $S_{\hat{\theta}}$ se conoce como error estándar y $t_{\alpha/2}$ deviene la distribución **t-student**.
 
 Así, por ejemplo, un intervalo de confianza al 95 % **garantiza** que, si tomamos 100 muestras, el verdadero valor del parámetro estará dentro del intervalo en aproximadamente el 95 de los intervalos construidos.
 
@@ -67,9 +66,9 @@ De este modo, con un nivel de confianza $1 - \alpha$ se espera que $\theta$ se e
 
 Para efectos de **este curso** $\theta$ puede ser $\beta_i$ es decir, el coeficiente de regresión. Entonces $\hat{\theta}$ sería $\hat{\beta_i}$, es decir, el estimador del coeficiente de regresión.
 
-Todo intervalo de confianza involucra pruebas de hipótesis y en el caso de los intervalos de confianza de las regresiones, los contrastes de hipótesis son: 
+Todo intervalo de confianza involucra pruebas de hipótesis y en el caso de los intervalos de confianza de las regresiones, los contrastes de hipótesis son:
 
-* Hipótesis nula
+-   Hipótesis nula
 
 El intervalo de confianza contiene a cero
 
@@ -77,7 +76,7 @@ $$
 H_o: \beta_i = 0
 $$
 
-* Hipótesis alternativa
+-   Hipótesis alternativa
 
 El intervalo de confianza NO contiene a cero
 
@@ -85,39 +84,37 @@ $$
 H_i: \beta_i \ne 0
 $$
 
-
 Es por eso que en las regresiones, por lo general **nos interesa** rechazar la hipótesis nula, ya que si el intervalo de confianza contiene a cero el efecto de dicho coeficiente es cero, nulo, no aporta, etc... Lo que dicho de otra forma quiere decir que se incluyó un regresor que NO aporta.
 
 ## Reflexiones iniciales alrededor del intervalo de confianza
 
 Para desarrollar esta reflexión se utiliza el intervalo de confianza para la media ($\mu$).
 
->*¿Cómo puede afectar el rango de valores del intervalo de confianza?*
+> *¿Cómo puede afectar el rango de valores del intervalo de confianza?*
 
 Según la fórmula del intervalo de confianza, esto se puede logar cambiando:
 
-* El nivel de significancia
-  * Lo que varía el valor de $t_{\alpha/2}$
-  
-* El error estándar, que se conseguiría variando:
-  * El tamaño de muestra ($n$)
-  * La desviación estándar ($s$)
+-   El nivel de significancia
+    -   Lo que varía el valor de $t_{\alpha/2}$
+-   El error estándar, que se conseguiría variando:
+    -   El tamaño de muestra ($n$)
+    -   La desviación estándar ($s$)
 
-Estos últimos ya que el error estándar $S_{\hat{\mu}}$ para el caso del intervalo de confianza de la media se puede descomponer como: 
+Estos últimos ya que el error estándar $S_{\hat{\mu}}$ para el caso del intervalo de confianza de la media se puede descomponer como:
 
 $$
 \frac{s}{\sqrt{n}}
 $$
 
-Pero, en la mayoría de los casos, una vez recogida la muestra, ya no es posible cambiar el valor de $s$ ni de $n$, por lo qué la única alternativa que queda es la de cambiar el nivel de significancia. 
+Pero, en la mayoría de los casos, una vez recogida la muestra, ya no es posible cambiar el valor de $s$ ni de $n$, por lo qué la única alternativa que queda es la de cambiar el nivel de significancia.
 
-> *Qué valores escoger, cómo hacerlo y demás son cuestiones que dependen del contexto en el que se está trabajando.* 
+> *Qué valores escoger, cómo hacerlo y demás son cuestiones que dependen del contexto en el que se está trabajando.*
 
 Pero piense, si el intervalo de confianza es demasiado ancho, muchos valores de la hipótesis nula podrían ser aceptados y esa no es la idea que debe haber detrás de un proceso de prueba de hipótesis; de igual forma en el sentido contrario, si el intervalo es demasiado angosto. ¡Es como un tira y afloja!
 
 # Ejemplo interactivo
 
-Supongamos una población de tamaño $N = 100000$ que se distribuye de forma $N(0, 4)$ (Léase: de forma normal con media 0 y varianza 4), tal qué: 
+Supongamos una población de tamaño $N = 100000$ que se distribuye de forma $N(0, 4)$ (Léase: de forma normal con media 0 y varianza 4), tal qué:
 
 ```{r}
 
@@ -141,13 +138,13 @@ data.frame(n = seq(1, N), poblacion = poblacion) %>%
 
 ```
 
-Donde la linea vertical roja representa el valor **verdadero** o **poblacional** ($\theta$) que en este caso es la media ($\mu$) que queremos estimar por medio de estadísticos muestrales. 
+Donde la linea vertical roja representa el valor **verdadero** o **poblacional** ($\theta$) que en este caso es la media ($\mu$) que queremos estimar por medio de estadísticos muestrales.
 
 Para ello la simulación interactiva que se le presenta a continuación, va a tomar 100 muestras de tamaño ($N$) con un nivel de confianza ($1-\alpha$).
 
 Tanto N como el nivel de confianza se pueden variar con las barras laterales. Los valores iniciales de estos parámetros se encuentran en $N = 30$ y $1-\alpha = 0.95$, que son valores **clásicos**.
 
-Tome en cuenta que aumentar $N$ es aumentar la potencia estadística de prueba, por lo que si lo desea, puede utilizar esta misma herramienta para entender el comportamiento de la potencia. No obstante, para este ejercicio asincrónico lo que interesa es que reflexione sobre el intervalo de confianza. 
+Tome en cuenta que aumentar $N$ es aumentar la potencia estadística de prueba, por lo que si lo desea, puede utilizar esta misma herramienta para entender el comportamiento de la potencia. No obstante, para este ejercicio asincrónico lo que interesa es que reflexione sobre el intervalo de confianza.
 
 Recuerde que el valor verdadero es la media de la población, que en este caso es cero, entonces las pruebas de hipótesis son:
 
@@ -163,17 +160,17 @@ $$
 
 > **Responda**
 
-Si desea ver la aplicación Web en un tamaño mayor visite el siguiente enlace: 
+Si desea ver la aplicación Web en un tamaño mayor visite el siguiente enlace: <http://18.208.251.231:3838/confidence_level_app/nivel_confianza/>
 
-1. Sin variar los parámetros iniciales, ¿en cuantos intervalos de confianza se rechaza la hipótesis nula? ¿Se cumple, aproximadamente, con lo mencionado en este documento ("*Así, por ejemplo, un intervalo de confianza al 95 % garantiza que, si tomamos 100 muestras, el verdadero valor del parámetro estará dentro del intervalo en aproximadamente el 95 de los intervalos construidos.*").
+1.  Sin variar los parámetros iniciales, ¿en cuantos intervalos de confianza se rechaza la hipótesis nula? ¿Se cumple, aproximadamente, con lo mencionado en este documento ("*Así, por ejemplo, un intervalo de confianza al 95 % garantiza que, si tomamos 100 muestras, el verdadero valor del parámetro estará dentro del intervalo en aproximadamente el 95 de los intervalos construidos.*").
 
-2. Varíe el valor del nivel de confianza, sin modificar el tamaño de muestra, ¿qué sucede cuando lo disminuye? ¿y cuando lo aumenta? ¿en qué contexto puede ser beneficioso bajar o subir el nivel de confianza? (Consejo: pruebe los valores clásicos de 0.90, 0.95 y 0.99, pero también utilice otros valores)
+2.  Varíe el valor del nivel de confianza, sin modificar el tamaño de muestra, ¿qué sucede cuando lo disminuye? ¿y cuando lo aumenta? ¿en qué contexto puede ser beneficioso bajar o subir el nivel de confianza? (Consejo: pruebe los valores clásicos de 0.90, 0.95 y 0.99, pero también utilice otros valores)
 
-3. Regrese a un nivel de confianza de 0.95, cambie el tamaño de muestra de 30 a 100. Responda nuevamente los puntos 1 y 2.
+3.  Regrese a un nivel de confianza de 0.95, cambie el tamaño de muestra de 30 a 100. Responda nuevamente los puntos 1 y 2.
 
-4. Con los parámetros definidos en 3, responda. ¿Qué paso con el tamaño de los intervalos cuando aumentó el tamaño de muestra de 30 a 100? (Nota, al cambiar $N$ se toma una nueva muestra, por eso puede observar cambios bruscos).
+4.  Con los parámetros definidos en 3, responda. ¿Qué paso con el tamaño de los intervalos cuando aumentó el tamaño de muestra de 30 a 100? (Nota, al cambiar $N$ se toma una nueva muestra, por eso puede observar cambios bruscos).
 
-5. Cambie libremente los parámetros, saque conclusiones adicionales y socialícelas en clase con el resto de las personas estudiantes. 
+5.  Cambie libremente los parámetros, saque conclusiones adicionales y socialícelas en clase con el resto de las personas estudiantes.
 
 ```{r}
 
