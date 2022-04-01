@@ -16,16 +16,10 @@ ui <- fluidPage(
   # Application title
   titlePanel("Simulación de intervalos de confianza"),
   
-  h3("Steven García Goñi"),
-  h5("Los datos provienen de una población normal con media 0 y varianza 4 N(0, 4)"),
-  h5("Se grafican 100 intervalos de confianza construidos a partir de 100 muestras de tamaño N"),
-  h5("El nivel de confianza y el tamaño de muestra pueden ser variados en la aplicación"),
-  
   # Sidebar
   sidebarLayout(
     sidebarPanel(
       "Cambie los siguientes valores", 
-      position = "right",
       sliderInput("conf",
                   "Nivel de confianza:",
                   min = 0.5,
@@ -38,7 +32,7 @@ ui <- fluidPage(
                   min = 10,
                   max = 200,
                   value = 30, 
-                  step = 10), 
+                  step = 10)
       
     ),
     
@@ -65,7 +59,9 @@ server <- function(input, output) {
       
       IC_sup <- estadistico$conf.int[2]
       
-      data.frame(x = IC_inf, xend = IC_sup)
+      m <- estadistico$estimate
+      
+      data.frame(x = IC_inf, xend = IC_sup, media = m)
     }
     
     cantidad_ic <- 100
@@ -82,11 +78,12 @@ server <- function(input, output) {
       ggplot2::ggplot(aes(x = x, y = y, xend = xend, yend = yend, color = cero)) +
       geom_segment(size = 1.0) +
       geom_vline(xintercept = 0, color = "darkred", size = 1) +
+      geom_point(aes(x = media, y = y), size = 2) +
       labs(title = "Intervalos de confianza",
            y = "Número de intervalos",
            x = "Intervalo de confianza",
            color = "Hipótesis nula") +
-      # scale_x_continuous(limits = c(-1, 3)) +
+      scale_x_continuous(limits = c(-2, 2.5)) +
       scale_color_manual(breaks = c("No rechaza", "Rechaza"),
                          values = c("green", "blue")) +
       coord_flip() +
