@@ -14,7 +14,6 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       "Cambie los siguientes valores", 
-      position = "right",
       sliderInput("conf",
                   "Nivel de confianza:",
                   min = 0.5,
@@ -27,7 +26,7 @@ ui <- fluidPage(
                   min = 10,
                   max = 200,
                   value = 30, 
-                  step = 10), 
+                  step = 10)
       
     ),
     
