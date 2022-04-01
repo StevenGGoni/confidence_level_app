@@ -16,6 +16,11 @@ ui <- fluidPage(
   # Application title
   titlePanel("Simulación de intervalos de confianza"),
   
+  h3("Steven García Goñi"),
+  h5("Los datos provienen de una población normal con media 0 y varianza 4 N(0, 4)"),
+  h5("Se grafican 100 intervalos de confianza construidos a partir de 100 muestras de tamaño N"),
+  h5("El nivel de confianza y el tamaño de muestra pueden ser variados en la aplicación"),
+  
   # Sidebar
   sidebarLayout(
     sidebarPanel(
@@ -39,9 +44,6 @@ ui <- fluidPage(
     
     # Show a plot
     mainPanel(
-      h3("Los datos provienen de una población normal con media 0 y varianza 4 N(0, 4)"),
-      h3("Intervalos de confianza para 100 muestras de tamaño N"),
-      h3("Nivel de significancia variable"),
       plotOutput("IC_plot")
     )
   )
