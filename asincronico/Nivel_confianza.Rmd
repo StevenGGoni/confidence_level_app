@@ -120,7 +120,7 @@ Supongamos una población de tamaño $N = 100000$ que se distribuye de forma $N(
 
 N <- 100000
 
-set.seed(123)
+# set.seed(123)
 
 poblacion <- rnorm(N, 0, 2)
 
