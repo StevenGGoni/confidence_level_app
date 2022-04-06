@@ -6,7 +6,7 @@ ggplot2::theme_set(theme_bw(base_size = 20))
 
 N <- 100000
 
-# set.seed(123)
+set.seed(123)
 
 poblacion <- rnorm(N, 0, 2)
 
